@@ -10,6 +10,7 @@ cli = click.Group()
 
 @cli.command(name="init")
 def initialize():
+	"""Initialize list, only run this once"""
 	home = os.path.expanduser("~")
 	try:
 		os.makedirs(home+"/.todo/")
@@ -22,6 +23,7 @@ def initialize():
 
 @cli.command(name="list")
 def print_list():
+	"""List all todo items in order"""
 	try:
 		f = open(TODO_LOC, 'r')
 		d = json.load(f)
@@ -37,6 +39,7 @@ def print_list():
 @cli.command(name="add")
 @click.argument("text")
 def add_to_list(text):
+	"""Add an item to the end of the list: `todo add \"item text\"` """
 	try:
 		f = open(TODO_LOC, 'r')
 		d = json.load(f)
@@ -52,6 +55,7 @@ def add_to_list(text):
 @cli.command(name="remove")
 @click.argument("num_to_remove", type=int)
 def remove_from_list(num_to_remove):
+	"""Remove an item by number: `todo remove 5`"""
 	try:
 		num_to_remove -=1
 		f = open(TODO_LOC, 'r')
@@ -70,6 +74,7 @@ def remove_from_list(num_to_remove):
 @click.argument("num_to_edit", type=int)
 @click.argument("new_text", type=str)
 def edit_item(num_to_edit, new_text):
+	"""Edit the text of an item: `todo edit 5 \"new text\"`"""
 	try:
 		num_to_edit = str(num_to_edit-1)
 		f = open(TODO_LOC, 'r')
@@ -86,6 +91,7 @@ def edit_item(num_to_edit, new_text):
 @click.argument("num_item", type=int)
 @click.argument("direction")
 def reorder(num_item, direction):
+	"""Move an item up or down the list: `todo move 4 up`"""
 	try:
 		num_item -=1
 		f = open(TODO_LOC, 'r')
