@@ -14,3 +14,15 @@ Commands:
   move    Move an item up or down the list: `todo move 4 up`
   remove  Remove an item by number: `todo remove 5`
 ```
+
+## Installation
+
+Prerequesite: python3
+
+1. Download `todo.py`
+2. Place it on your path
+   * Optionally, rename it to `todo`
+3. Make it executable
+4. Run `todo.py init`
+   * Or `todo init` if you have renamed the file
+  
